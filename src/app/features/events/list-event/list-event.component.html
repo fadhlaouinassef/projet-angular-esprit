@@ -1,5 +1,9 @@
 <div class="container py-4">
   <h2 class="mb-3">Liste des événements</h2>
+  
+  <div class="mb-4">
+    <a [routerLink]="['../selection']" class="btn btn-primary">Voir les événements par catégorie</a>
+  </div>
 
   <div class="row g-3">
     <div class="col-md-4" *ngFor="let e of events">

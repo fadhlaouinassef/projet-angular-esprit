@@ -1,0 +1,16 @@
+<div class="card shadow-sm h-100 border-0">
+  <div class="card-body">
+    <img src="{{ e.imageUrl }}" class="card-img-top mb-3" alt="{{ e.title }}" style="height: 300px; width: 200px; object-fit: cover;">
+    <h5 class="card-title text-primary text-center">{{ e.title }}</h5>
+    <p class="card-text text-muted mb-1"><strong>Prix :</strong> {{ e.price | currency:'EUR' }}</p>
+    <p class="card-text"><strong>Description :</strong> {{ e.description }}</p>
+    <p class="card-text"><strong>Date :</strong> {{ e.date | date:'dd/MM/yyyy' }}</p>
+    <p class="card-text"><strong>Lieu :</strong> {{ e.location }}</p>
+    <p class="card-text"><strong>Places disponibles :</strong> {{ e.nbPlaces }}</p>
+    <p class="card-text"><strong>Likes :</strong> {{ e.nbrLike }} ❤️</p>
+  </div>
+  <div class="card-footer bg-transparent border-0 text-center">
+    <button
+      class="btn btn-sm btn-primary w-75" (click)="goToDetails(e.id)">Détails</button>
+  </div>
+</div>

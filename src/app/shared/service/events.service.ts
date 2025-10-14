@@ -30,6 +30,18 @@ export class EventsService {
         imageUrl: 'https://cdn.dribbble.com/userupload/37287941/file/original-a59d13499667b765fb5aceb8b5d5bf0d.jpg',
         nbPlaces: 0,
         nbrLike: 3
+      },
+      {
+        id: 3,
+        title: 'React Conference',
+        description: 'Conférence dédiée aux développeurs React et écosystème.',
+        date: new Date('2025-12-15'),
+        location: 'Sfax',
+        price: 75,
+        organizerId: 103,
+        imageUrl: 'https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png',
+        nbPlaces: 5,
+        nbrLike: 8
       }
     ];
   constructor() { }
