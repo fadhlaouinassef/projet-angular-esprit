@@ -1,4 +1,4 @@
-<div class="card shadow-sm h-100 border-0">
+<div class="card shadow-sm h-100 border-0" appChangebackground>
   <div class="card-body">
     <img src="{{ e.imageUrl }}" class="card-img-top mb-3" alt="{{ e.title }}" style="height: 300px; width: 200px; object-fit: cover;">
     <h5 class="card-title text-primary text-center">{{ e.title }}</h5>
@@ -11,6 +11,12 @@
   </div>
   <div class="card-footer bg-transparent border-0 text-center">
     <button
-      class="btn btn-sm btn-primary w-75" (click)="goToDetails(e.id)">Détails</button>
+      class="btn btn-sm btn-success me-2" (click)="likeEvent(e)">
+      ❤️ Like
+    </button>
+    <button
+      class="btn btn-sm btn-primary me-2" (click)="goToDetails(e.id)">Détails</button>
+    <button
+      class="btn btn-sm btn-warning" (click)="participate(e.id, e.price)">Participer</button>
   </div>
 </div>

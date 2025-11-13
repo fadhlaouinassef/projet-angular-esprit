@@ -1,0 +1,31 @@
+<form #myForm="ngForm">
+  <label for="name">Name:</label>
+  <input
+    class="form-control"
+    type="text"
+    id="name"
+    name="name"
+    ngModel
+    #login="ngModel"
+    required
+    minlength="3"
+  />
+  <div class="alert alert-danger mt-2" *ngIf="login.invalid && login.touched">
+    <div *ngIf="login.errors?.['required']">
+      Name is required
+    </div>
+    <div *ngIf="login.errors?.['minlength']">
+      Minimum 3 characters
+    </div>
+  </div>
+
+  <label for="email">Email:</label>
+  <input class="form-control" type="email" id="email" name="email" ngModel required />
+
+  <label for="password">Password:</label>
+  <input class="form-control" type="password" id="password" name="password" ngModel required minlength="6" />
+
+  <button class="btn btn-primary mt-3" type="submit" [disabled]="myForm.invalid" onclick="save()">
+    Submit
+  </button>
+</form>

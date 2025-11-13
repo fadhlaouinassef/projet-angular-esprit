@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Eventy } from '../../model/eventy';
+﻿import { Injectable } from '@angular/core';
+import { Eventy } from '../../../model/eventy';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class EventsService {
       {
         id: 1,
         title: 'Angular Summit',
-        description: 'Conférence sur Angular et l’écosystème front-end.',
+        description: 'Conference sur Angular et ecosysteme front-end.',
         date: new Date('2025-11-10'),
         location: 'Tunis',
         price: 50,
@@ -22,7 +22,7 @@ export class EventsService {
       {
         id: 2,
         title: 'Web Dev Days',
-        description: 'Journée dédiée aux frameworks web modernes.',
+        description: 'Journee dediee aux frameworks web modernes.',
         date: new Date('2025-01-05'),
         location: 'Ariana',
         price: 30,
@@ -34,7 +34,7 @@ export class EventsService {
       {
         id: 3,
         title: 'React Conference',
-        description: 'Conférence dédiée aux développeurs React et écosystème.',
+        description: 'Conference dediee aux developpeurs React et ecosysteme.',
         date: new Date('2025-12-15'),
         location: 'Sfax',
         price: 75,
@@ -46,7 +46,7 @@ export class EventsService {
       {
         id: 4,
         title: 'React Conference',
-        description: 'Conférence dédiée aux développeurs React et écosystème.',
+        description: 'Conference dediee aux developpeurs React et ecosysteme.',
         date: new Date('2025-12-15'),
         location: 'Sfax',
         price: 75,
@@ -58,7 +58,7 @@ export class EventsService {
       {
         id: 5,
         title: 'React Conference',
-        description: 'Conférence dédiée aux développeurs React et écosystème.',
+        description: 'Conference dediee aux developpeurs React et ecosysteme.',
         date: new Date('2025-12-15'),
         location: 'Sfax',
         price: 75,
@@ -68,9 +68,9 @@ export class EventsService {
         nbrLike: 7
       }
     ];
+
   constructor() { }
 
-  // Ajouter un événement
   addEvent(event: Omit<Eventy, 'id' | 'nbrLike' | 'organizerId'>): void {
     const newEvent: Eventy = {
       ...event,
@@ -81,12 +81,10 @@ export class EventsService {
     this.events.push(newEvent);
   }
 
-  // Générer ID suivant
   getNextId(): number {
     return Math.max(...this.events.map(e => e.id), 0) + 1;
   }
 
-  // Récupérer tous les événements
   getEvents(): Eventy[] {
     return this.events;
   }

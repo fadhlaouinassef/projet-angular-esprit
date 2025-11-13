@@ -1,0 +1,50 @@
+<p>reactive-form works!</p>
+
+<form [formGroup]="formLogin">
+
+  <label for="login">Login:</label>
+  <input class="form-control" type="text" formControlName="login"/>
+
+  <div class="alert alert-danger" *ngIf="formLogin.controls['login'].invalid && formLogin.controls['login'].touched">
+    <div *ngIf="formLogin.controls['login'].hasError('required')">
+      Login Obligatoire
+    </div>
+    <div *ngIf="formLogin.controls['login'].hasError('minlength')">
+      Login Minimum 3 caractères
+    </div>
+  </div>
+
+  <label for="password">Password:</label>
+  <input class="form-control" type="password" formControlName="password"/>
+
+    <div class="alert alert-danger" *ngIf="formLogin.controls['password'].invalid && formLogin.controls['password'].touched">
+      <div *ngIf="formLogin.controls['password'].hasError('required')">
+        Mot de passe obligatoire
+      </div>
+      <div *ngIf="formLogin.controls['password'].hasError('pattern')">
+        Le mot de passe doit contenir uniquement des lettres et des chiffres
+      </div>
+    </div>
+
+  <label for="age">Age:</label>
+  <input class="form-control" type="number" formControlName="age"/>
+
+    <div class="alert alert-danger" *ngIf="formLogin.controls['age'].invalid && formLogin.controls['age'].touched">
+      <p>
+        Age Obligatoire
+      </p>
+    </div>
+
+  <label for="CIN">CIN:</label>
+  <input class="form-control" type="text" formControlName="CIN"/>
+
+    <div class="alert alert-danger" *ngIf="formLogin.controls['CIN'].invalid && formLogin.controls['CIN'].touched">
+      <p>
+        CIN Obligatoire
+      </p>
+    </div>
+
+
+  <input type="button" value="Submit" [disabled]="formLogin.invalid"/>
+
+</form>

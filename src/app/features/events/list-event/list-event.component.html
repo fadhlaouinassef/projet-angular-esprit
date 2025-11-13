@@ -5,25 +5,9 @@
     <a [routerLink]="['../selection']" class="btn btn-primary">Voir les événements par catégorie</a>
   </div>
 
-  <div class="row g-3">
-    <div class="col-md-4" *ngFor="let e of events">
-      <div class="card h-100 shadow-sm">
-        <img src="{{e.imageUrl}}" [alt]="e.title" [title]="e.title"
-             class="card-img-top img-fluid" style="height: 200px; object-fit: cover;">
-
-        <div class="card-body">
-          <h5 class="card-title">{{ e.title }}</h5>
-          <p class="text-muted">{{ e.location }} • {{ e.date | date}}</p>
-          <p>{{ e.description }}</p>
-          <p class="fw-bold">{{ e.price }}</p>
-          <p>Places disponibles : {{ e.nbPlaces }}</p>
-
-          <!-- Bouton Like -->
-
-          <span class="ms-2">{{ e.nbrLike }}</span>
-          <a  [routerLink]="['./detail',e.id]">Detail</a>
-        </div>
-      </div>
+  <div class="row g-4">
+    <div class="col-md-4 col-sm-6" *ngFor="let event of events; let i = index">
+      <app-card-evenement [e]="event"></app-card-evenement>
     </div>
   </div>
 </div>

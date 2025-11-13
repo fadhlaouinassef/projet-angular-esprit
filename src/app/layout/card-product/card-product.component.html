@@ -5,9 +5,14 @@
             <p class="card-text text-muted mb-1"><strong>Prix :</strong> {{ p.price | currency:'EUR' }}</p>
             <p class="card-text"><strong>Description :</strong> {{ p.description }}</p>
             <p class="card-text"><strong>Quantité :</strong> {{ p.quantity }}</p>
+            <p class="card-text"><strong>Likes :</strong> {{ p.like }} ❤️</p>
           </div>
           <div class="card-footer bg-transparent border-0 text-center">
             <button
-              class="btn btn-sm btn-primary w-75" [disabled]="p.quantity == 0" (click)="sendDataToParent(p)"> Acheter</button>
+              class="btn btn-sm btn-success me-2" (click)="likeProduct(p)">
+              ❤️ Like
+            </button>
+            <button
+              class="btn btn-sm btn-primary" [disabled]="p.quantity == 0" (click)="sendDataToParent(p)"> Acheter</button>
           </div>
         </div>

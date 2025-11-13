@@ -1,0 +1,82 @@
+<h3>Formulaire de participation</h3>
+
+<form #participationForm="ngForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="userId">User ID</label>
+    <input
+      type="number"
+      id="userId"
+      name="userId"
+      [(ngModel)]="participation.userId"
+      required
+      #userId="ngModel"
+    />
+    <div *ngIf="userId.invalid && userId.touched">
+      <div *ngIf="userId.errors?.['required']">
+        Le User ID est obligatoire.
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="eventId">Event ID</label>
+    <input
+      type="number"
+      id="eventId"
+      name="eventId"
+      [(ngModel)]="participation.eventId"
+      readonly
+    />
+  </div>
+
+  <div>
+    <label for="email">Email du participant</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      [(ngModel)]="participation.emailParticipant"
+      required
+      email
+      #email="ngModel"
+    />
+    <div *ngIf="email.invalid && email.touched">
+      <div *ngIf="email.errors?.['required']">
+        L'email est obligatoire.
+      </div>
+      <div *ngIf="email.errors?.['email']">
+        Veuillez entrer un email valide.
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="nbPlaces">Nombre de places</label>
+    <input
+      type="number"
+      id="nbPlaces"
+      name="nbPlaces"
+      [(ngModel)]="participation.nbPlaces"
+      required
+      min="1"
+      #nbPlaces="ngModel"
+      (blur)="calculateTotalPrice()"
+    />
+    <div *ngIf="nbPlaces.invalid && nbPlaces.touched">
+      <div *ngIf="nbPlaces.errors?.['required']">
+        Le nombre de places est obligatoire.
+      </div>
+      <div *ngIf="nbPlaces.errors?.['min']">
+        Le nombre de places doit être supérieur à 0.
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showTotalPrice && nbPlaces.valid">
+    <strong>Prix total:</strong> {{ totalPrice | currency:'EUR' }}
+  </div>
+
+  <button type="submit" [disabled]="participationForm.invalid">
+    Soumettre
+  </button>
+</form>

@@ -15,10 +15,9 @@ export class BestEvenementsComponent implements OnInit {
   constructor(private eventsService: EventsService) { }
 
   ngOnInit() {
-    // Récupérer tous les événements et les filtrer pour les meilleurs
-    // Les meilleurs événements sont ceux avec le plus petit nombre de places disponibles (plus exclusifs)
     this.listEvents = this.eventsService.events
-      .filter(event => event.nbPlaces > 0) // Seulement les événements avec places disponibles
-      .sort((a, b) => a.nbPlaces - b.nbPlaces); // Trier par nbPlaces croissant (moins de places = plus exclusif)
+      .filter(event => event.nbPlaces > 0)
+      .sort((a, b) => a.nbPlaces - b.nbPlaces)
+      .map(event => ({...event, isBest: true}));   
   }
 }

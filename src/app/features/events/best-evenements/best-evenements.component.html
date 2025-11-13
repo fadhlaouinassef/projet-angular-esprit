@@ -4,7 +4,7 @@
   <input type="text" [(ngModel)]="searchTerm" class="form-control mb-4" placeholder="Rechercher un événement...">
   
   <div class="row g-4">
-    <div class="col-md-4 col-sm-6" *ngFor="let event of listEvents; let i = index">
+    <div class="col-md-4 col-sm-6" *ngFor="let event of listEvents | orderByLikes">
       <ng-container *ngIf="searchTerm === ''">
         <app-card-evenement [e]="event"></app-card-evenement>
       </ng-container>

@@ -1,0 +1,82 @@
+<p>form-evenements works!</p>
+
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit()" novalidate class="mx-5">
+
+  <label for="title">Titre de l'événement:</label>
+  <input class="form-control" type="text" formControlName="title" id="title"/>
+
+  <div class="alert alert-danger" *ngIf="eventForm.controls['title'].invalid && eventForm.controls['title'].touched">
+    <div *ngIf="eventForm.controls['title'].hasError('required')">
+      Le titre est obligatoire
+    </div>
+    <div *ngIf="eventForm.controls['title'].hasError('minlength')">
+      Minimum 5 caractères
+    </div>
+    <div *ngIf="eventForm.controls['title'].hasError('pattern')">
+      Seules les lettres et espaces sont autorisées
+    </div>
+  </div>
+
+  <label for="description">Description de l'événement:</label>
+  <textarea class="form-control" formControlName="description" id="description" rows="3"></textarea>
+
+  <div class="alert alert-danger" *ngIf="eventForm.controls['description'].invalid && eventForm.controls['description'].touched">
+    <div *ngIf="eventForm.controls['description'].hasError('required')">
+      La description est obligatoire
+    </div>
+    <div *ngIf="eventForm.controls['description'].hasError('minlength')">
+      Minimum 30 caractères
+    </div>
+  </div>
+
+  <label for="date">Date de l'événement:</label>
+  <input class="form-control" type="date" formControlName="date" id="date"/>
+
+  <div class="alert alert-danger" *ngIf="eventForm.controls['date'].invalid && eventForm.controls['date'].touched">
+    <div *ngIf="eventForm.controls['date'].hasError('required')">
+      La date est obligatoire
+    </div>
+    <div *ngIf="eventForm.get('date')?.errors?.['futureDateInvalid']">
+      {{ eventForm.get('date')?.errors?.['futureDateInvalid'] }}
+    </div>
+  </div>
+
+  <label for="price">Prix de l'événement:</label>
+  <input class="form-control" type="text" formControlName="price" id="price"/>
+
+  <div class="alert alert-danger" *ngIf="eventForm.controls['price'].invalid && eventForm.controls['price'].touched">
+    <div *ngIf="eventForm.controls['price'].hasError('required')">
+      Le prix est obligatoire
+    </div>
+    <div *ngIf="eventForm.controls['price'].hasError('pattern')">
+      Format invalide (ex: 50 ou 49.99)
+    </div>
+  </div>
+
+  <label for="places">Nombre de places:</label>
+  <input class="form-control" type="text" formControlName="places" id="places"/>
+
+  <div class="alert alert-danger" *ngIf="eventForm.controls['places'].invalid && eventForm.controls['places'].touched">
+    <div *ngIf="eventForm.controls['places'].hasError('required')">
+      Le nombre de places est obligatoire
+    </div>
+    <div *ngIf="eventForm.controls['places'].hasError('pattern')">
+      Doit être entre 1 et 100
+    </div>
+  </div>
+
+  <label for="location">Lieu de l'événement:</label>
+  <input class="form-control" type="text" formControlName="location" id="location"/>
+
+  <div class="alert alert-danger" *ngIf="eventForm.controls['location'].invalid && eventForm.controls['location'].touched">
+    <div *ngIf="eventForm.controls['location'].hasError('required')">
+      Le lieu est obligatoire
+    </div>
+  </div>
+
+  <label for="imageUrl">URL de l'image (optionnel):</label>
+  <input class="form-control" type="text" formControlName="imageUrl" id="imageUrl"/>
+
+  <input type="submit" onclick="save()" value="Ajouter" [disabled]="eventForm.invalid" class="btn btn-primary mt-3"/>
+
+</form>
